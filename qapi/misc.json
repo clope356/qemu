@@ -1552,3 +1552,65 @@
 ##
 { 'command': 'query-vm-generation-id', 'returns': 'GuidInfo' }
 
+##
+# @hello-world:
+#
+# Test function.
+#
+#
+##
+{ 'command': 'hello-world' }
+
+##
+# @disable-PS2-Keyboard:
+#
+# Disable PS2 keyboard.
+#
+#
+##
+{ 'command': 'disable-PS2-Keyboard' }
+
+##
+# @enable-PS2-Keyboard:
+#
+# Enable PS2 keyboard.
+#
+#
+##
+{ 'command': 'enable-PS2-Keyboard' }
+
+##
+# @disable-VGA:
+#
+# Disable VGA.
+#
+#
+##
+{ 'command': 'disable-VGA' }
+
+##
+# @enable-VGA:
+#
+# Enable VGA.
+#
+#
+##
+{ 'command': 'enable-VGA' }
+
+##
+# @disable-NET:
+#
+# Disable NET.
+#
+#
+##
+{ 'command': 'disable-NET' }
+
+##
+# @enable-NET:
+#
+# Enable NET.
+#
+#
+##
+{ 'command': 'enable-NET' }

@@ -2246,6 +2246,16 @@ void hmp_enable_VGA(Monitor* mon,const QDict* qdict){
 	qmp_enable_VGA(NULL);
 }
 
+void qmp_disable_NET(Error** err){
+	
+	printf("Disable NET\n");
+}
+
+void qmp_enable_NET(Error** err){
+	
+	printf("Enable NET\n");
+}
+
 void hmp_disable_NET(Monitor* mon,const QDict* qdict){
 	
 	//Error** err = NULL;
