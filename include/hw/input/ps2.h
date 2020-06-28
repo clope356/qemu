@@ -48,5 +48,8 @@ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4);
 void ps2_keyboard_set_translation(void *opaque, int mode);
 void ps2_mouse_fake_event(void *opaque);
 int ps2_queue_empty(PS2State *s);
+void qmp_hello_world(Error ** errp);
 
+void qmp_disable_PS2_Keyboard(Error ** errp);
+void qmp_enable_PS2_Keyboard(Error ** errp);
 #endif /* HW_PS2_H */

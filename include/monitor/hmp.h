@@ -130,5 +130,13 @@ void hmp_hotpluggable_cpus(Monitor *mon, const QDict *qdict);
 void hmp_info_vm_generation_id(Monitor *mon, const QDict *qdict);
 void hmp_info_memory_size_summary(Monitor *mon, const QDict *qdict);
 void hmp_info_sev(Monitor *mon, const QDict *qdict);
+void hmp_hello_world(Monitor* mon,const QDict* qdict);
+void hmp_disable_PS2_Keyboard(Monitor* mon,const QDict* qdict);
+void hmp_enable_PS2_Keyboard(Monitor* mon,const QDict* qdict);
 
+void hmp_disable_VGA(Monitor* mon,const QDict* qdict);
+void hmp_enable_VGA(Monitor* mon,const QDict* qdict);
+
+void hmp_disable_NET(Monitor* mon,const QDict* qdict);
+void hmp_enable_NET(Monitor* mon,const QDict* qdict);
 #endif

@@ -1828,4 +1828,58 @@ ERST
         .sub_table  = hmp_info_cmds,
         .flags      = "p",
     },
+    {
+	.name       = "hello-test",
+        .args_type  = "",
+        .params     = "",
+	.help       = "Print hello world",
+	.cmd        = hmp_hello_world,
+    },
 
+    {
+	.name       = "disable-PS2-K",
+        .args_type  = "",
+        .params     = "",
+	.help       = "Disables PS2 Keyboard",
+	.cmd        = hmp_disable_PS2_Keyboard,
+    },
+
+	{
+	.name       = "enable-PS2-K",
+        .args_type  = "",
+        .params     = "",
+	.help       = "Enables PS2 Keyboard",
+	.cmd        = hmp_enable_PS2_Keyboard,
+    },
+
+    {
+	.name       = "disable-VGA",
+        .args_type  = "",
+        .params     = "",
+	.help       = "Disables VGA",
+	.cmd        = hmp_disable_VGA,
+    },
+
+	{
+	.name       = "enable-VGA",
+        .args_type  = "",
+        .params     = "",
+	.help       = "Enables VGA",
+	.cmd        = hmp_enable_VGA,
+    },
+    
+    {
+	.name       = "disable-NET",
+        .args_type  = "",
+        .params     = "",
+	.help       = "Disables NET",
+	.cmd        = hmp_disable_NET,
+    },
+
+	{
+	.name       = "enable-NET",
+        .args_type  = "",
+        .params     = "",
+	.help       = "Enables NET",
+	.cmd        = hmp_enable_NET,
+    },

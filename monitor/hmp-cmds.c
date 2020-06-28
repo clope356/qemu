@@ -2215,3 +2215,45 @@ void hmp_info_memory_size_summary(Monitor *mon, const QDict *qdict)
     }
     hmp_handle_error(mon, err);
 }
+//#include "hw/input/ps2.h"
+void hmp_hello_world(Monitor* mon,const QDict* qdict){
+	
+	//Error** err = NULL;
+	qmp_hello_world(NULL);
+}
+
+void hmp_disable_PS2_Keyboard(Monitor* mon,const QDict* qdict){
+	
+	//Error** err = NULL;
+	qmp_disable_PS2_Keyboard(NULL);
+}
+
+void hmp_enable_PS2_Keyboard(Monitor* mon,const QDict* qdict){
+	
+	//Error** err = NULL;
+	qmp_enable_PS2_Keyboard(NULL);
+}
+
+void hmp_disable_VGA(Monitor* mon,const QDict* qdict){
+	
+	//Error** err = NULL;
+	qmp_disable_VGA(NULL);
+}
+
+void hmp_enable_VGA(Monitor* mon,const QDict* qdict){
+	
+	//Error** err = NULL;
+	qmp_enable_VGA(NULL);
+}
+
+void hmp_disable_NET(Monitor* mon,const QDict* qdict){
+	
+	//Error** err = NULL;
+	qmp_disable_NET(NULL);
+}
+
+void hmp_enable_NET(Monitor* mon,const QDict* qdict){
+	
+	//Error** err = NULL;
+	qmp_enable_NET(NULL);
+}

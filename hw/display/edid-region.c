@@ -4,6 +4,7 @@
 
 static uint64_t edid_region_read(void *ptr, hwaddr addr, unsigned size)
 {
+
     uint8_t *edid = ptr;
 
     return edid[addr];

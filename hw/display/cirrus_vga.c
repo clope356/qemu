@@ -2045,11 +2045,14 @@ static void cirrus_vga_mem_write(void *opaque,
                                  uint64_t mem_value,
                                  uint32_t size)
 {
+
+    //printf("Screen write?\n");
+
     CirrusVGAState *s = opaque;
     unsigned bank_index;
     unsigned bank_offset;
     unsigned mode;
-
+    
     if ((s->vga.sr[0x07] & 0x01) == 0) {
         vga_mem_writeb(&s->vga, addr, mem_value);
         return;
@@ -3005,7 +3008,7 @@ static void cirrus_vga_class_init(ObjectClass *klass, void *data)
 {
     DeviceClass *dc = DEVICE_CLASS(klass);
     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-
+printf("Init cirrus\n");
     k->realize = pci_cirrus_vga_realize;
     k->romfile = VGABIOS_CIRRUS_FILENAME;
     k->vendor_id = PCI_VENDOR_ID_CIRRUS;

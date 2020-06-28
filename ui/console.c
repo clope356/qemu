@@ -196,16 +196,39 @@ static void text_console_update_cursor_timer(void);
 static void text_console_update_cursor(void *opaque);
 static bool ppm_save(int fd, DisplaySurface *ds, Error **errp);
 
+void qmp_disable_VGA(Error ** err);
+void qmp_enable_VGA(Error ** err);
+
+int disable_VGA_MON = 0;
+
+void qmp_disable_VGA(Error ** err){
+        printf("\nDisabling\n");
+	disable_VGA_MON = 1;
+}
+
+void qmp_enable_VGA(Error ** err){
+        printf("\nENABLING\n");
+	disable_VGA_MON = 0;
+}
+
+
 static void gui_update(void *opaque)
 {
+
+    //printf("Refresh\n");
     uint64_t interval = GUI_REFRESH_INTERVAL_IDLE;
     uint64_t dcl_interval;
     DisplayState *ds = opaque;
     DisplayChangeListener *dcl;
     QemuConsole *con;
 
+//if(disable_VGA_MON){
+//return;
+//}
+
     ds->refreshing = true;
-    dpy_refresh(ds);
+    if(!disable_VGA_MON)
+    	dpy_refresh(ds);
     ds->refreshing = false;
 
     QLIST_FOREACH(dcl, &ds->listeners, next) {

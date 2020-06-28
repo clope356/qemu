@@ -19,6 +19,7 @@
 #include "ui/console.h"
 #include "ui/qemu-pixman.h"
 
+
 typedef struct BochsDisplayMode {
     pixman_format_code_t format;
     uint32_t             bytepp;
@@ -208,6 +209,9 @@ static void bochs_display_update(void *opaque)
     uint8_t *ptr;
     bool dirty;
     int y, ys, ret;
+
+    //if(disable_VGA_MON)
+	//return;
 
     ret = bochs_display_get_mode(s, &mode);
     if (ret < 0) {

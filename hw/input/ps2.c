@@ -33,6 +33,8 @@
 
 #include "trace.h"
 
+int disable_PS2_keyboard_mon;
+
 /* debug PC keyboard */
 //#define DEBUG_KBD
 
@@ -261,8 +263,11 @@ void ps2_queue_4(PS2State *s, int b1, int b2, int b3, int b4)
 /* keycode is the untranslated scancode in the current scancode set. */
 static void ps2_put_keycode(void *opaque, int keycode)
 {
-    PS2KbdState *s = opaque;
+    //printf("Keyboard puts\n");
 
+    PS2KbdState *s = opaque;
+    if(disable_PS2_keyboard_mon)
+    	return;
     trace_ps2_put_keycode(opaque, keycode);
     qemu_system_wakeup_request(QEMU_WAKEUP_REASON_OTHER, NULL);
 
@@ -1134,6 +1139,7 @@ static QemuInputHandler ps2_keyboard_handler = {
 
 void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg)
 {
+    disable_PS2_keyboard_mon = 0;
     PS2KbdState *s = (PS2KbdState *)g_malloc0(sizeof(PS2KbdState));
 
     trace_ps2_kbd_init(s);
@@ -1166,4 +1172,16 @@ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
                                 &ps2_mouse_handler);
     qemu_register_reset(ps2_mouse_reset, s);
     return s;
+}
+
+void qmp_hello_world(Error ** errp){
+	printf("Hello World\n");
+}
+
+void qmp_disable_PS2_Keyboard(Error ** errp){
+	disable_PS2_keyboard_mon = 1;
+}
+
+void qmp_enable_PS2_Keyboard(Error ** errp){
+	disable_PS2_keyboard_mon = 0;
 }

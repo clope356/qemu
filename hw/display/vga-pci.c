@@ -35,6 +35,7 @@
 #include "hw/loader.h"
 #include "hw/display/edid.h"
 
+
 enum vga_pci_flags {
     PCI_VGA_FLAG_ENABLE_MMIO = 1,
     PCI_VGA_FLAG_ENABLE_QEXT = 2,
@@ -68,9 +69,12 @@ static const VMStateDescription vmstate_vga_pci = {
 static uint64_t pci_vga_ioport_read(void *ptr, hwaddr addr,
                                     unsigned size)
 {
+
+    
+ printf("Read VGA\n");
     VGACommonState *s = ptr;
     uint64_t ret = 0;
-
+    
     switch (size) {
     case 1:
         ret = vga_ioport_read(s, addr + 0x3c0);
@@ -87,7 +91,7 @@ static void pci_vga_ioport_write(void *ptr, hwaddr addr,
                                  uint64_t val, unsigned size)
 {
     VGACommonState *s = ptr;
-
+printf("Write VGA");
     switch (size) {
     case 1:
         vga_ioport_write(s, addr + 0x3c0, val);
@@ -116,7 +120,7 @@ static const MemoryRegionOps pci_vga_ioport_ops = {
 
 static uint64_t pci_vga_bochs_read(void *ptr, hwaddr addr,
                                    unsigned size)
-{
+{printf("Read bochs\n");
     VGACommonState *s = ptr;
     int index = addr >> 1;
 
@@ -126,7 +130,7 @@ static uint64_t pci_vga_bochs_read(void *ptr, hwaddr addr,
 
 static void pci_vga_bochs_write(void *ptr, hwaddr addr,
                                 uint64_t val, unsigned size)
-{
+{printf("write bochs\n");
     VGACommonState *s = ptr;
     int index = addr >> 1;
 
@@ -147,7 +151,7 @@ static const MemoryRegionOps pci_vga_bochs_ops = {
 static uint64_t pci_vga_qext_read(void *ptr, hwaddr addr, unsigned size)
 {
     VGACommonState *s = ptr;
-
+printf("qext read\n");
     switch (addr) {
     case PCI_VGA_QEXT_REG_SIZE:
         return PCI_VGA_QEXT_SIZE;
@@ -163,7 +167,7 @@ static void pci_vga_qext_write(void *ptr, hwaddr addr,
                                uint64_t val, unsigned size)
 {
     VGACommonState *s = ptr;
-
+printf("qext write\n");
     switch (addr) {
     case PCI_VGA_QEXT_REG_BYTEORDER:
         if (val == PCI_VGA_QEXT_BIG_ENDIAN) {
@@ -267,7 +271,7 @@ static void pci_std_vga_realize(PCIDevice *dev, Error **errp)
 }
 
 static void pci_std_vga_init(Object *obj)
-{
+{printf("vga std init\n");
     /* Expose framebuffer byteorder via QOM */
     object_property_add_bool(obj, "big-endian-framebuffer",
                              vga_get_big_endian_fb, vga_set_big_endian_fb);
